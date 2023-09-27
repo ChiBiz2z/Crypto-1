@@ -13,16 +13,16 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
+            <RowDefinition Height="106*" />
+            <RowDefinition Height="48*" />
+            <RowDefinition Height="63*" />
         </Grid.RowDefinitions>
 
         <!-- Input Text Area -->
-        <TextBox Grid.Column="0" Grid.Row="0" Margin="10" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" TextChanged="TextBox_TextChanged" />
+        <TextBox Grid.Column="0" Grid.Row="0" Margin="10,10,10,10" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" TextChanged="TextBox_TextChanged" />
 
         <!-- StackPanel with Buttons -->
-        <Grid Grid.Column="1" Grid.Row="0" Margin="5 10">
+        <Grid Grid.Column="1" Grid.Row="0" Margin="5,10,5,10">
             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Button Content="Зашифровать" Margin="0 10" Padding="5" FontSize="16" />
                 <Button Content="Расшифровать" Margin="0 10" Padding="5" FontSize="16" />
@@ -32,11 +32,11 @@
 
 
         <!-- Encrypted/Decrypted Text Area -->
-        <TextBox Grid.Column="2" Grid.Row="0" Margin="10" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" />
+        <TextBox Grid.Column="2" Grid.Row="0" Margin="10,10,10,10" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" IsEnabled="False" />
 
         <!-- Encryption Method Checkboxes -->
         <!-- Encryption Method RadioButtons -->
-        <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" Orientation="Vertical" Margin="10">
+        <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" Orientation="Vertical" Margin="10,0,10,0" VerticalAlignment="Center" Height="59">
             <RadioButton Content="Method 1" />
             <RadioButton Content="Method 2" />
             <RadioButton Content="Method 3" />
@@ -54,7 +54,7 @@
             </Grid.ColumnDefinitions>
 
             <!-- First row -->
-            <TextBlock Grid.Column="0" Grid.Row="0" Text="Частотный словарь текста" Margin="10,10,10,10"/>
+            <TextBlock Grid.Column="0" Grid.Row="0" Text="Частотный словарь текста" Margin="10,10,10,10" OpacityMask="Black"/>
             <ListView Grid.Column="1" Grid.Row="0" Margin="10,5,10,5">
                 <!-- Add your values here -->
             </ListView>
