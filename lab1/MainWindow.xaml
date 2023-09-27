@@ -6,7 +6,64 @@
         xmlns:local="clr-namespace:lab1"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
+    <Grid Background="LightSlateGray">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
 
+        <!-- Input Text Area -->
+        <TextBox Grid.Column="0" Grid.Row="0" Margin="10" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" TextChanged="TextBox_TextChanged" />
+
+        <!-- StackPanel with Buttons -->
+        <Grid Grid.Column="1" Grid.Row="0" Margin="5 10">
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Button Content="Зашифровать" Margin="0 10" Padding="5" FontSize="16" />
+                <Button Content="Расшифровать" Margin="0 10" Padding="5" FontSize="16" />
+                <!-- Add more buttons here if needed -->
+            </StackPanel>
+        </Grid>
+
+
+        <!-- Encrypted/Decrypted Text Area -->
+        <TextBox Grid.Column="2" Grid.Row="0" Margin="10" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" />
+
+        <!-- Encryption Method Checkboxes -->
+        <!-- Encryption Method RadioButtons -->
+        <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" Orientation="Vertical" Margin="10">
+            <RadioButton Content="Method 1" />
+            <RadioButton Content="Method 2" />
+            <RadioButton Content="Method 3" />
+            <RadioButton Content="Method 4" />
+        </StackPanel>
+
+        <Grid Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3" VerticalAlignment="Center" Height="100">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" MinHeight="35.96" />
+                <RowDefinition Height="Auto" MinHeight="24" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <!-- First row -->
+            <TextBlock Grid.Column="0" Grid.Row="0" Text="Частотный словарь текста" Margin="10,10,10,10"/>
+            <ListView Grid.Column="1" Grid.Row="0" Margin="10,5,10,5">
+                <!-- Add your values here -->
+            </ListView>
+
+            <!-- Second row -->
+            <TextBlock Grid.Column="0" Grid.Row="1" Margin="10,10,10,-18" ><Run Text="Частотный словарь"/><LineBreak/><Run Text="русского языка"/></TextBlock>
+            <ListView Grid.Column="1" Grid.Row="1" Margin="10,18,10,-18">
+                <!-- Add your values here -->
+            </ListView>
+        </Grid>
     </Grid>
 </Window>
