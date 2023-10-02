@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace lab1
+namespace lab1.Encryption
 {
     class CeaserEncoder : ICryptable
     {
@@ -8,7 +8,7 @@ namespace lab1
 
         public CeaserEncoder(int key = 1)
         {
-            this._key = key;
+            _key = key;
         }
 
         public string Decrypt(string text) => CodeEncode(text, -_key);
@@ -17,13 +17,13 @@ namespace lab1
 
         private string CodeEncode(string text, int k)
         {
-            var fullAlfabet = AppConstants.RussianAlphabetWithLowerCase;
-            var letterQty = fullAlfabet.Length;
+            var fullAlphabet = AppConstants.RussianAlphabetWithLowerCase;
+            var letterQty = fullAlphabet.Length;
             var sb = new StringBuilder();
             foreach (var c in text)
             {
-                var index = fullAlfabet.IndexOf(c);
-                sb.Append(index < 0 ? c : fullAlfabet[(letterQty + index + k) % letterQty]);
+                var index = fullAlphabet.IndexOf(c);
+                sb.Append(index < 0 ? c : fullAlphabet[(letterQty + index + k) % letterQty]);
             }
             return sb.ToString();
         }

@@ -5,6 +5,7 @@ using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using lab1.Encryption;
 
 namespace lab1
 {
@@ -18,34 +19,61 @@ namespace lab1
             InitializeComponent();
         }
 
-        private void KeyInput_LostFocus(object sender, RoutedEventArgs e)
+        private void IntKeyInput_LostFocus(object sender, RoutedEventArgs e)
         {
             TextBox textBox = (TextBox)sender;
             if (!int.TryParse(textBox.Text, out int value) || value > 32)
-                ceaserKeyInput.Text = value > 32 ? "32" : "1";
+                CaesarKeyInput.Text = value > 32 ? "32" : "1";
         }
 
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
             => e.Handled = new Regex("[^0-9]+").IsMatch(e.Text);
+
+        private void LetterValidationTextBox(object sender, TextCompositionEventArgs e)
+        => e.Handled = new Regex("[^a-zA-Zа-яА-Я]+").IsMatch(e.Text);
+
         private void CeaserRadioButton_Checked(object sender, RoutedEventArgs e)
-            => ceaserKeyInput.IsEnabled = true;
+            => CaesarKeyInput.IsEnabled = true;
 
         private void CeaserRadioButton_UnChecked(object sender, RoutedEventArgs e)
-            => ceaserKeyInput.IsEnabled = false;
+            => CaesarKeyInput.IsEnabled = false;
+
+        private void TrithemiusRadioButton_Checked(object sender, RoutedEventArgs e)
+            => TrithemiusKeyInput.IsEnabled = true;
+
+        private void TrithemiusRadioButton_UnChecked(object sender, RoutedEventArgs e)
+            => TrithemiusKeyInput.IsEnabled = false;
+
 
         private void Encrypt_Button_Click(object sender, RoutedEventArgs e)
         {
-            if (ceaserEncoding.IsChecked == true)
+            if (CaesarEncoding.IsChecked == true)
             {
-                outPutTextBox.Text = new CeaserEncoder(int.Parse(ceaserKeyInput.Text)).Encrypt(inputTextBox.Text);
+                outPutTextBox.Text = new CeaserEncoder(int.Parse(CaesarKeyInput.Text)).Encrypt(InputTextBox.Text);
+            }
+            if (TrithemiusEncoding.IsChecked == true)
+            {
+                outPutTextBox.Text = new TrithemiusEncoder(TrithemiusKeyInput.Text).Encrypt(InputTextBox.Text);
+            }
+            if (MonoEncoding.IsChecked == true)
+            {
+                outPutTextBox.Text = new MonoEncoder().Encrypt(InputTextBox.Text);
             }
         }
 
         private void Decrypt_Button_Click(object sender, RoutedEventArgs e)
         {
-            if (ceaserEncoding.IsChecked == true)
+            if (CaesarEncoding.IsChecked == true)
             {
-                outPutTextBox.Text = new CeaserEncoder(int.Parse(ceaserKeyInput.Text)).Decrypt(inputTextBox.Text);
+                outPutTextBox.Text = new CeaserEncoder(int.Parse(CaesarKeyInput.Text)).Decrypt(InputTextBox.Text);
+            }
+            if (TrithemiusEncoding.IsChecked == true)
+            {
+                outPutTextBox.Text = new TrithemiusEncoder(TrithemiusKeyInput.Text).Decrypt(InputTextBox.Text);
+            }
+            if (MonoEncoding.IsChecked == true)
+            {
+                outPutTextBox.Text = new MonoEncoder().Decrypt(InputTextBox.Text);
             }
         }
 
@@ -57,7 +85,7 @@ namespace lab1
             languageFrequency.Items.Clear();
             textFrequency.Items.Clear();
             var freq = new Dictionary<char, double>(AppConstants.RussianAlphabet.Length);
-            var text = inputTextBox.Text.ToLower();
+            var text = InputTextBox.Text.ToLower();
             foreach (var c in AppConstants.RussianAlphabet.ToLower())
                 freq[c] = 0;
 

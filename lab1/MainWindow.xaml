@@ -13,13 +13,13 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="425*" />
-            <RowDefinition Height="91*" />
-            <RowDefinition Height="168*" />
+            <RowDefinition Height="359*" />
+            <RowDefinition Height="133*" />
+            <RowDefinition Height="192*" />
         </Grid.RowDefinitions>
 
         <!-- Input Text Area -->
-        <TextBox Name="inputTextBox" Grid.Column="0" Grid.Row="0" Margin="10,10,10,10" AcceptsReturn="True" VerticalScrollBarVisibility="Auto"/>
+        <TextBox Name="InputTextBox" Grid.Column="0" Grid.Row="0" Margin="10,10,10,10" AcceptsReturn="True" VerticalScrollBarVisibility="Auto"/>
 
         <!-- StackPanel with Buttons -->
         <Grid Grid.Column="1" Grid.Row="0" Margin="5,10,5,10">
@@ -33,26 +33,27 @@
 
 
         <!-- Encrypted/Decrypted Text Area -->
-        <TextBox Name="outPutTextBox" Grid.Column="2" Grid.Row="0" Margin="10,10,10,10" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" IsEnabled="False"/>
+        <TextBox Name="outPutTextBox" Grid.Column="2" Grid.Row="0" Margin="10,10,10,10" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" IsReadOnly="True"/>
 
         <!-- Encryption Method Checkboxes -->
-        <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" Orientation="Vertical" Margin="10,0,10,0" VerticalAlignment="Center" Height="79">
-            <StackPanel Orientation="Horizontal">
-                <RadioButton Name="ceaserEncoding" Content="Шифр Цезаря" Checked="CeaserRadioButton_Checked" Unchecked="CeaserRadioButton_UnChecked" VerticalAlignment="Center"  Margin="0 0 10 0"  GroupName="Methods"/>
-                <Border BorderBrush="Black" BorderThickness="1">
-                    <StackPanel Orientation="Horizontal">
-                        <Label Content="Key"/>
-                        <TextBox Width="70" Name="ceaserKeyInput" IsEnabled="False" PreviewTextInput="NumberValidationTextBox" VerticalAlignment="Center" LostFocus="KeyInput_LostFocus"/>
-                    </StackPanel>
-                </Border>
+        <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" Orientation="Vertical" Margin="10,0,10,0" VerticalAlignment="Center" Height="90">
+            <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
+                <RadioButton Name="CaesarEncoding" Content="Шифр Цезаря" Checked="CeaserRadioButton_Checked" Unchecked="CeaserRadioButton_UnChecked" VerticalAlignment="Center"  Margin="0 0 10 0"  GroupName="Methods"/>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Key"/>
+                    <TextBox Width="70" Name="CaesarKeyInput" IsEnabled="False" PreviewTextInput="NumberValidationTextBox" VerticalAlignment="Center" LostFocus="IntKeyInput_LostFocus"/>
+                </StackPanel>
             </StackPanel>
-            <RadioButton Content="Method 2"  GroupName="Methods" />
-            <RadioButton Content="Method 3"  GroupName="Methods" />
-            <RadioButton Content="Method 4"  GroupName="Methods" />
+            <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
+                <RadioButton Name="TrithemiusEncoding" Content="Метод Тритемиуса" Checked="TrithemiusRadioButton_Checked" Unchecked="TrithemiusRadioButton_UnChecked" VerticalAlignment="Center"  Margin="0 0 10 0"  GroupName="Methods"/>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Key"/>
+                    <TextBox Width="359" Name="TrithemiusKeyInput" IsEnabled="False" VerticalAlignment="Center" PreviewTextInput="LetterValidationTextBox"/>
+                </StackPanel>
+            </StackPanel>
+            <RadioButton Name="MonoEncoding" Content="Шифрование с ключом из двух массивов" VerticalAlignment="Center"  Margin="0 0 10 0"  GroupName="Methods"/>
+
         </StackPanel>
-
-
-
         <Grid Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3" VerticalAlignment="Center" Height="136">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" MinHeight="70" />
