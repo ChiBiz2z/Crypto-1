@@ -11,10 +11,11 @@ public class TrithemiusEncoder : ICryptable
         => _key = string.IsNullOrEmpty(key) ? "ключ" : key;
 
     public string Encrypt(string text) => Encode(text, (index, keyIndex) =>
-    (index + keyIndex) % AppConstants.RussianAlphabet.Length);
+    ((index + keyIndex) + AppConstants.RussianAlphabet.Length) % AppConstants.RussianAlphabet.Length);
 
     public string Decrypt(string text) => Encode(text, (index, keyIndex) =>
-    (index - keyIndex) % AppConstants.RussianAlphabet.Length);
+    ((index - keyIndex) + AppConstants.RussianAlphabet.Length) % AppConstants.RussianAlphabet.Length);
+
 
 
     private string Encode(string text, Func<int, int, int> operation)
