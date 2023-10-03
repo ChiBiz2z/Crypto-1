@@ -19,7 +19,7 @@
         </Grid.RowDefinitions>
 
         <!-- Input Text Area -->
-        <TextBox Name="InputTextBox" Grid.Column="0" Grid.Row="0" Margin="10,10,10,10" AcceptsReturn="True" VerticalScrollBarVisibility="Auto"/>
+        <TextBox Name="InputTextBox" Grid.Column="0" Grid.Row="0" Margin="10,10,10,10" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" FontSize="26px" TextWrapping="Wrap"/>
 
         <!-- StackPanel with Buttons -->
         <Grid Grid.Column="1" Grid.Row="0" Margin="5,10,5,10">
@@ -27,31 +27,37 @@
                 <Button Content="Зашифровать" Margin="0 10" Padding="5" FontSize="16" Click="Encrypt_Button_Click"/>
                 <Button Content="Расшифровать" Margin="0 10" Padding="5" FontSize="16" Click="Decrypt_Button_Click"/>
                 <Button Content="Частотный анализ" Margin="0 10" Padding="5" FontSize="16" Click="Frequency_Button_Click"/>
+                <Button Content="Показать график" Margin="0 10" Padding="5" FontSize="16" Click="Graphic_Button_Click"/>
                 <!-- Add more buttons here if needed -->
             </StackPanel>
         </Grid>
 
 
         <!-- Encrypted/Decrypted Text Area -->
-        <TextBox Name="outPutTextBox" Grid.Column="2" Grid.Row="0" Margin="10,10,10,10" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" IsReadOnly="True"/>
+        <TextBox Name="outPutTextBox" Grid.Column="2" Grid.Row="0" Margin="10,10,10,10" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" IsReadOnly="True"  FontSize="26px" TextWrapping="Wrap"/>
 
         <!-- Encryption Method Checkboxes -->
-        <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" Orientation="Vertical" Margin="10,0,10,0" VerticalAlignment="Center" Height="90">
+        <StackPanel Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" Orientation="Vertical" Margin="10,0,10,0" VerticalAlignment="Center" Height="120">
             <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
-                <RadioButton Name="CaesarEncoding" Content="Шифр Цезаря" Checked="CeaserRadioButton_Checked" Unchecked="CeaserRadioButton_UnChecked" VerticalAlignment="Center"  Margin="0 0 10 0"  GroupName="Methods"/>
+                <RadioButton Name="CaesarEncoding" Content="Шифр Цезаря" FontSize="20px"
+                             Checked="CeaserRadioButton_Checked" Unchecked="CeaserRadioButton_UnChecked" VerticalAlignment="Center"  Margin="0 0 10 0"  GroupName="Methods"/>
                 <StackPanel Orientation="Horizontal">
-                    <Label Content="Key"/>
+                    <Label Content="Key" FontSize="20px"
+/>
                     <TextBox Width="70" Name="CaesarKeyInput" IsEnabled="False" PreviewTextInput="NumberValidationTextBox" VerticalAlignment="Center" LostFocus="IntKeyInput_LostFocus"/>
                 </StackPanel>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
-                <RadioButton Name="TrithemiusEncoding" Content="Метод Тритемиуса" Checked="TrithemiusRadioButton_Checked" Unchecked="TrithemiusRadioButton_UnChecked" VerticalAlignment="Center"  Margin="0 0 10 0"  GroupName="Methods"/>
+                <RadioButton Name="TrithemiusEncoding" Content="Метод Тритемиуса" FontSize="20px"
+ Checked="TrithemiusRadioButton_Checked" Unchecked="TrithemiusRadioButton_UnChecked" VerticalAlignment="Center"  Margin="0 0 10 0"  GroupName="Methods"/>
                 <StackPanel Orientation="Horizontal">
-                    <Label Content="Key"/>
+                    <Label Content="Key" FontSize="20px"
+/>
                     <TextBox Width="359" Name="TrithemiusKeyInput" IsEnabled="False" VerticalAlignment="Center" PreviewTextInput="LetterValidationTextBox"/>
                 </StackPanel>
             </StackPanel>
-            <RadioButton Name="MonoEncoding" Content="Шифрование с ключом из двух массивов" VerticalAlignment="Center"  Margin="0 0 10 0"  GroupName="Methods"/>
+            <RadioButton Name="MonoEncoding" Content="Шифрование с ключом из двух массивов" FontSize="20px"
+ VerticalAlignment="Center"  Margin="0 0 10 0"  GroupName="Methods"/>
 
         </StackPanel>
         <Grid Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="3" VerticalAlignment="Center" Height="136">
@@ -79,10 +85,10 @@
                         <Border BorderBrush="LightGray" BorderThickness="0.5">
                             <StackPanel Orientation="Vertical" Margin="0">
                                 <Border BorderBrush="LightGray" BorderThickness="0.5">
-                                    <TextBlock Text="{Binding Key}" HorizontalAlignment="Center" FontSize="10px"/>
+                                    <TextBlock Text="{Binding Key}" HorizontalAlignment="Center" FontSize="14px"/>
                                 </Border>
                                 <Border BorderBrush="LightGray" BorderThickness="0.5">
-                                    <TextBlock Text="{Binding Value,  StringFormat='{}{0}%'}" HorizontalAlignment="Center" FontSize="10px"/>
+                                    <TextBlock Text="{Binding Value,  StringFormat='{}{0}%'}" HorizontalAlignment="Center" FontSize="14px"/>
                                 </Border>
                             </StackPanel>
                         </Border>
@@ -104,10 +110,10 @@
                         <Border BorderBrush="LightGray" BorderThickness="0.5">
                             <StackPanel Orientation="Vertical" Margin="0">
                                 <Border BorderBrush="LightGray" BorderThickness="0.5">
-                                    <TextBlock Text="{Binding Key}" HorizontalAlignment="Center" FontSize="10px"/>
+                                    <TextBlock Text="{Binding Key}" HorizontalAlignment="Center" FontSize="14px"/>
                                 </Border>
                                 <Border BorderBrush="LightGray" BorderThickness="0.5">
-                                    <TextBlock Text="{Binding Value,  StringFormat='{}{0}%'}" HorizontalAlignment="Center" FontSize="10px"/>
+                                    <TextBlock Text="{Binding Value,  StringFormat='{}{0}%'}" HorizontalAlignment="Center" FontSize="14px"/>
                                 </Border>
                             </StackPanel>
                         </Border>

@@ -101,5 +101,23 @@ namespace lab1
             languageFrequency.ItemsSource = AppConstants.RussianLanguageLettersFrequency;
             textFrequency.ItemsSource = freq.OrderByDescending(x => x.Value);
         }
+
+        private void Graphic_Button_Click(object sender, RoutedEventArgs e)
+        {
+            var freq = new Dictionary<char, double>(AppConstants.RussianAlphabet.Length);
+            var text = InputTextBox.Text.ToLower();
+            foreach (var c in AppConstants.RussianAlphabet.ToLower())
+                freq[c] = 0;
+
+            foreach (var letter in text)
+            {
+                if (AppConstants.RussianAlphabet.ToLower().Contains(letter.ToString()))
+                {
+                    var counter = text.Count(ch => ch == letter);
+                    freq[letter] = Math.Round(((double)counter / text.Length) * 100, 2);
+                }
+            }
+            new Diagrams(freq).Show();
+        }
     }
 }
